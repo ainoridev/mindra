@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import { useHomeHeroAnimations } from '@/animations/homePage'
+
 const storeIos = import.meta.env.VITE_STORE_IOS?.trim() || '#'
 const storeAndroid = import.meta.env.VITE_STORE_ANDROID?.trim() || '#'
+
+const homeRoot = ref<HTMLElement | null>(null)
+useHomeHeroAnimations(homeRoot)
 </script>
 
 <template>
-  <div class="home">
+  <div ref="homeRoot" class="home">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__visual" aria-hidden="true">
         <svg class="mascot" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
@@ -108,6 +115,22 @@ const storeAndroid = import.meta.env.VITE_STORE_ANDROID?.trim() || '#'
         </p>
       </div>
     </section>
+
+    <section class="gsap-scroll-demo" aria-labelledby="gsap-demo-title">
+      <h2 id="gsap-demo-title" class="gsap-scroll-demo__title">GSAP en esta página</h2>
+      <p class="gsap-scroll-demo__intro">
+        La entrada del hero es una <strong>timeline</strong>; el pulpo usa un bucle suave con
+        <strong>yoyo</strong>. Este panel aparece con <strong>ScrollTrigger</strong> al hacer scroll
+        (se revierte al salir del umbral). Todo vive dentro de
+        <code>gsap.context</code> y se limpia al cambiar de ruta.
+      </p>
+      <div class="gsap-scroll-demo__panel" role="note">
+        <p>
+          Patrón recomendado: <code>useGsapContext(ref, () =&gt; { ... })</code> con selectores
+          relativos al <code>ref</code>, más <code>gsap.matchMedia()</code> para accesibilidad.
+        </p>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -139,17 +162,7 @@ const storeAndroid = import.meta.env.VITE_STORE_ANDROID?.trim() || '#'
   width: min(220px, 70vw);
   height: auto;
   filter: drop-shadow(0 12px 24px rgba(12, 47, 56, 0.2));
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  will-change: transform;
 }
 
 .hero__caption {
@@ -273,5 +286,47 @@ const storeAndroid = import.meta.env.VITE_STORE_ANDROID?.trim() || '#'
   padding: 0.1em 0.35em;
   border-radius: 0.25rem;
   background: var(--color-background-mute);
+}
+
+.gsap-scroll-demo {
+  margin-top: 2rem;
+  padding: 2.5rem 0 4rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.gsap-scroll-demo__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+}
+
+.gsap-scroll-demo__intro {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+  max-width: 52ch;
+}
+
+.gsap-scroll-demo__intro code {
+  font-size: 0.85em;
+  padding: 0.08em 0.3em;
+  border-radius: 0.25rem;
+  background: var(--color-background-mute);
+}
+
+.gsap-scroll-demo__panel {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.gsap-scroll-demo__panel code {
+  font-size: 0.88em;
 }
 </style>
