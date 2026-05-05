@@ -43,16 +43,6 @@ async function onSubmitLead() {
   <div ref="homeRoot" class="landing">
     <nav class="nav">
       <div class="logo">
-        <svg class="logo-octopus" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="18" cy="14" rx="10" ry="9" fill="#7c3aed" />
-          <circle cx="14.5" cy="13" r="2" fill="white" />
-          <circle cx="21.5" cy="13" r="2" fill="white" />
-          <circle cx="14.8" cy="13.3" r="1" fill="#1a1035" />
-          <circle cx="21.8" cy="13.3" r="1" fill="#1a1035" />
-          <path d="M10 20 Q8 23 9 26 Q10 28 11 26 Q11 29 13 27 Q13 30 15 28" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none" />
-          <path d="M18 21 Q18 25 18 28 Q19 30 20 28 Q20 31 22 29" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none" />
-          <path d="M26 20 Q28 23 27 26 Q26 28 25 26 Q25 29 23 27 Q23 30 21 28" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none" />
-        </svg>
         Mink
       </div>
       <div class="nav-links">
@@ -80,22 +70,7 @@ async function onSubmitLead() {
       </div>
       <div class="hero-mascot">
         <div class="mascot-blob" />
-        <svg class="mascot-svg" width="260" height="260" viewBox="0 0 260 260" fill="none">
-          <ellipse cx="130" cy="115" rx="68" ry="62" fill="#7c3aed" />
-          <ellipse cx="112" cy="88" rx="22" ry="14" fill="#9d5ef0" opacity="0.5" />
-          <ellipse cx="112" cy="110" rx="14" ry="14" fill="white" />
-          <ellipse cx="148" cy="110" rx="14" ry="14" fill="white" />
-          <circle cx="115" cy="112" r="8" fill="#1a1035" />
-          <circle cx="151" cy="112" r="8" fill="#1a1035" />
-          <path d="M118 128 Q130 138 142 128" stroke="#1a1035" stroke-width="2.5" stroke-linecap="round" />
-          <ellipse cx="104" cy="124" rx="8" ry="5" fill="#ec4899" opacity="0.45" />
-          <ellipse cx="156" cy="124" rx="8" ry="5" fill="#ec4899" opacity="0.45" />
-          <path d="M64 110 Q50 108 46 118 Q43 128 55 130" stroke="#7c3aed" stroke-width="9" stroke-linecap="round" />
-          <path d="M196 110 Q210 108 214 118 Q217 128 205 130" stroke="#7c3aed" stroke-width="9" stroke-linecap="round" />
-          <path d="M90 170 Q82 185 86 198 Q88 205 94 200 Q94 210 100 205" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" />
-          <path d="M130 175 Q130 192 130 204 Q131 212 136 208 Q137 215 142 210" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" />
-          <path d="M170 170 Q178 185 174 198 Q172 205 166 200 Q166 210 160 205" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" />
-        </svg>
+        <img class="mascot-svg" src="@/assets/minky.png" alt="Minky, pulpo de Mink" />
       </div>
     </section>
 
@@ -193,7 +168,7 @@ async function onSubmitLead() {
 .landing {
   --ink: #1a1035;
   --cream: #fffbf4;
-  --purple: #7c3aed;
+  --purple: #a79bff;
   --purple-light: #ede9fe;
   --teal: #0d9488;
   --teal-light: #ccfbf1;
@@ -233,6 +208,7 @@ async function onSubmitLead() {
 .logo-octopus {
   width: 36px;
   height: 36px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -337,7 +313,7 @@ async function onSubmitLead() {
 .btn-primary {
   background: var(--purple);
   color: white;
-  box-shadow: 0 4px 0 #5b21b6;
+  box-shadow: 0 4px 0 #8a7fe6;
 }
 
 .btn-secondary {
@@ -363,7 +339,10 @@ async function onSubmitLead() {
 .mascot-svg {
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 12px 24px rgb(124 58 237 / 18%));
+  width: 260px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 24px rgb(167 155 255 / 24%));
 }
 
 .stats-bar {
@@ -474,7 +453,7 @@ async function onSubmitLead() {
   border-radius: 20px;
   background: white;
   padding: 1.4rem;
-  box-shadow: 0 10px 30px rgb(124 58 237 / 10%);
+  box-shadow: 0 10px 30px rgb(167 155 255 / 16%);
 }
 
 .field {
@@ -498,8 +477,8 @@ async function onSubmitLead() {
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgb(124 58 237 / 15%);
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgb(167 155 255 / 22%);
 }
 
 .waitlist-submit {
