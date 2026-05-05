@@ -3,10 +3,12 @@
 interface ImportMetaEnv {
   /** Base URL del backend (sin barra final). Ej.: `https://api.example.com` */
   readonly VITE_API_BASE_URL?: string
-  /** Enlace público a la ficha en App Store */
-  readonly VITE_STORE_IOS?: string
-  /** Enlace público a la ficha en Google Play */
-  readonly VITE_STORE_ANDROID?: string
+  /** Endpoint público para insertar leads de la waitlist */
+  readonly VITE_LEADS_API_URL?: string
+  /** Supabase project URL */
+  readonly VITE_SUPABASE_URL?: string
+  /** Supabase publishable public key */
+  readonly VITE_SUPABASE_PUBLISHABLE_KEY?: string
 }
 
 interface ImportMeta {
